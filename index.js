@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const stripe = require("stripe")("sk_test_51I8YS7FmFajbaU3gSJfP0DkPljsIoSfcDGGJCXLRv9Sod03rO3o5hFkP5gs3T6J7OrLTyupY6dULTzD6qMJCBTIF00YS3wnjWe");
+const stripe = require("stripe")("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");
 //const path = require("path")
 const cors = require("cors");
 const PORT = process.env.PORT || 5000;
@@ -19,7 +19,7 @@ app.post("/create-checkout-session", async (req, res) => {
     });
 
    /*
-    const session = await stripe.checkout.sessions.create({
+    const session = await stripe.checkout.sessions.create({ 
         payment_method_types: ["card"],
         line_items: [
             {

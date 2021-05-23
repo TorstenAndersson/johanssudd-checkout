@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 
 app.post("/create-checkout-session", async (req, res) => {
-    const { items } = req.body;
+    //const { items } = req.body;
     const paymentIntent = await stripe.paymentIntents.create({
         amount: 199.99,//calculateOrderAmount(items),
         currency: "sek"

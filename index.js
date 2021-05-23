@@ -5,6 +5,8 @@ const stripe = require("stripe")("sk_live_51I8YS7FmFajbaU3gMlxdbDRfdFg0GI8xyqExd
 const cors = require("cors");
 const PORT = process.env.PORT || 5000;
 
+app.use(cors());
+
 app.post("/create-checkout-session", async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],

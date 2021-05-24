@@ -10,7 +10,7 @@ app.use(cors());
 app.post("/create-checkout-session", async (req, res) => {
     //const { items } = req.body;
     const paymentIntent = await stripe.paymentIntents.create({
-        amount: 199.99,//calculateOrderAmount(items),
+        amount: 19999, //calculateOrderAmount(items),
         currency: "sek"
     });
 

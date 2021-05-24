@@ -17,7 +17,6 @@ app.post("/create-checkout-session", async (req, res) => {
     res.send({
         clientSecret: paymentIntent.client_secret
     });
-
    /*
     const session = await stripe.checkout.sessions.create({ 
         payment_method_types: ["card"],

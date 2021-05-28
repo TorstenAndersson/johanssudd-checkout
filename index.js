@@ -49,7 +49,6 @@ app.post("/swish", async (req, res) => {
         return (c=="x" ? r :(r&0x3|0x8)).toString(16);
     });
     //uuid
-    /*
 
     const data = JSON.stringify({
         payeePaymentReference: "0123456789",
@@ -61,7 +60,14 @@ app.post("/swish", async (req, res) => {
         message: "Johans Tisha"
     });
 
+    const agent = new https.    Agent({
+        cert: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.pem', { encoding: 'utf8' }),
+        key: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.key', { encoding: 'utf8' }),
+        ca: fs.readFileSync('./ssl/Swish_TLS_RootCA.pem', { encoding: 'utf8' })
+    });
+
     const options = {
+        agent: agent,
         hostname: "mss.cpc.getswish.net",
         port: 443,
         path: "/swish-cpcapi/api/v2/paymentrequests/" + uuid,
@@ -86,7 +92,8 @@ app.post("/swish", async (req, res) => {
       
       request.write(data);
       request.end();
-      */
+
+      /*
 
     const agent = new https.Agent({
         cert: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.pem', { encoding: 'utf8' }),
@@ -113,6 +120,7 @@ app.post("/swish", async (req, res) => {
         .then((ress) => {
             ress.send('Payment request created')
         });
+        */
 });
 
 app.post("/callback", (req, res) => {

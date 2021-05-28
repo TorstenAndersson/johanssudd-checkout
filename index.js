@@ -72,20 +72,20 @@ app.post("/swish", async (req, res) => {
         }
       };
 
-      const req = https.request(options, res => {
+      const request = https.request(options, response => {
         res.send(("statusCode: " + res.statusCode));
       
-        res.on("data", d => {
+        response.on("data", d => {
           process.stdout.write(d);
         })
       })
       
-      req.on("error", error => {
+      request.on("error", error => {
         res.send(error);
       })
       
-      req.write(data);
-      req.end();
+      request.write(data);
+      request.end();
 });
 
 app.post("/callback", (req, res) => {

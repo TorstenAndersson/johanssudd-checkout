@@ -91,7 +91,7 @@ app.post("/swish", async (req, res) => {
     const agent = new https.Agent({
         cert: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.pem', { encoding: 'utf8' }),
         key: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.key', { encoding: 'utf8' }),
-        ca: fs.readFileSync('./ssl/Swish_TLS_RootCA.pem', { encoding: 'utf8' }),
+        ca: fs.readFileSync('./ssl/Swish_TLS_RootCA.pem', { encoding: 'utf8' })
     });
       
       // Using Axios as HTTP library
@@ -101,7 +101,7 @@ app.post("/swish", async (req, res) => {
 
     const data = {
         payeePaymentReference: '0123456789',
-        callbackUrl: 'https://example.com/swishcallback',
+        callbackUrl: 'https://johanssudd-checkout.herokuapp.com/callback',
         payeeAlias: '1231181189',
         currency: 'SEK',
         payerAlias: '4671234768',

@@ -5,6 +5,8 @@ const stripe = require("stripe")("sk_live_51I8YS7FmFajbaU3gMlxdbDRfdFg0GI8xyqExd
 const https = require("https");
 const cors = require("cors");
 const PORT = process.env.PORT || 5000;
+const fs = require('fs');
+const axios = require('axios');
 
 app.use(cors());
 
@@ -50,6 +52,7 @@ app.post("/swish", async (req, res) => {
         return (c=="x" ? r :(r&0x3|0x8)).toString(16);
     });
     //uuid
+    /*
 
     const data = JSON.stringify({
         payeePaymentReference: "0123456789",
@@ -86,6 +89,34 @@ app.post("/swish", async (req, res) => {
       
       request.write(data);
       request.end();
+      */
+
+    const agent = new https.Agent({
+        cert: fs.readFileSync('./ssl/public.pem', { encoding: 'utf8' }),
+        key: fs.readFileSync('./ssl/private.key', { encoding: 'utf8' }),
+        ca: fs.readFileSync('./ssl/Swish_TLS_RootCA.pem', { encoding: 'utf8' }),
+    });
+      
+      // Using Axios as HTTP library
+    const client = axios.create({
+        httpsAgent: agent
+    });
+
+    const data = {
+        payeePaymentReference: '0123456789',
+        callbackUrl: 'https://example.com/swishcallback',
+        payeeAlias: '1231181189',
+        currency: 'SEK',
+        payerAlias: '4671234768',
+        amount: '100',
+        message: 'Kingston USB Flash Drive 8 GB'
+    };
+      
+    client.put(
+        `https://mss.cpc.getswish.net/swish-cpcapi/api/v2/paymentrequests/${uuid}`, data
+    ).then((res) => {
+        res.send('Payment request created')
+    });
 });
 
 app.post("/callback", (req, res) => {

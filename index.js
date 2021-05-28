@@ -50,6 +50,8 @@ app.post("/swish", async (req, res) => {
     });
     //uuid
 
+    console.log("hej hallå");
+
     const data = JSON.stringify({
         payeePaymentReference: "0123456789",
         callbackUrl: "https://johanssudd-checkout.herokuapp.com/callback",

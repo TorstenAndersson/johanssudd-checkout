@@ -73,7 +73,7 @@ app.post("/swish", async (req, res) => {
       };
 
       const request = https.request(options, response => {
-        res.send(("statusCode: " + res.statusCode));
+        res.send({"statusCode: ": "res.statusCode"});
       
         response.on("data", d => {
           process.stdout.write(d);
@@ -81,7 +81,7 @@ app.post("/swish", async (req, res) => {
       })
       
       request.on("error", error => {
-        res.send(error);
+        console.log(error);
       })
       
       request.write(data);

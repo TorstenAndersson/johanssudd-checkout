@@ -61,9 +61,9 @@ app.post("/swish", async (req, res) => {
     });
 
     const agent = new https.Agent({
-        cert: fs.readFileSync('ssl/Swish_Merchant_TestCertificate_1234679304.pem'),
-        key: fs.readFileSync('ssl/Swish_Merchant_TestCertificate_1234679304.key'),
-        ca: fs.readFileSync('ssl/Swish_TLS_RootCA.pem'),
+        cert: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.pem'),
+        key: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.key'),
+        ca: fs.readFileSync('./ssl/Swish_TLS_RootCA.pem'),
     });
 
     console.log("inte certifikat när de skapades hallå");
@@ -82,7 +82,7 @@ app.post("/swish", async (req, res) => {
 
     console.log("måste va request")
 
-    const request = https.request(options, response => {
+    const request = https.request(options, (response) => {
         console.log("statusCode: " + response.statusCode);
       
         response.on("data", d => {

@@ -62,7 +62,7 @@ app.post("/swish", async (req, res) => {
         message: "Johans Tisha"
     });
 
-    const agent = new https.    Agent({
+    const agent = new https.Agent({
         cert: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.pem', { encoding: 'utf8' }),
         key: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.key', { encoding: 'utf8' }),
         ca: fs.readFileSync('./ssl/Swish_TLS_RootCA.pem', { encoding: 'utf8' })

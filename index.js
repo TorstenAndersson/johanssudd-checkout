@@ -1,5 +1,4 @@
-const express = require("express");
-const app = express();
+const app = require("express")();
 const stripe = require("stripe")("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");
 //const path = require("path")
 const https = require("https");
@@ -17,9 +16,7 @@ app.post("/create-checkout-session", async (req, res) => {
         currency: "sek"
     });
 
-    res.send({
-        clientSecret: paymentIntent.client_secret
-    });
+    res.send({ clientSecret: paymentIntent.client_secret });
    /*
     const session = await stripe.checkout.sessions.create({ 
         payment_method_types: ["card"],
@@ -112,11 +109,10 @@ app.post("/swish", async (req, res) => {
         message: 'Kingston USB Flash Drive 8 GB'
     };
       
-    client.put(
-        `https://mss.cpc.getswish.net/swish-cpcapi/api/v2/paymentrequests/${uuid}`, data
-    ).then((res) => {
-        res.send('Payment request created')
-    });
+    client.put(`https://mss.cpc.getswish.net/swish-cpcapi/api/v2/paymentrequests/${uuid}`, data)
+        .then((ress) => {
+            ress.send('Payment request created')
+        });
 });
 
 app.post("/callback", (req, res) => {

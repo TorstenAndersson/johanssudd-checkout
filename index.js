@@ -50,8 +50,6 @@ app.post("/swish", async (req, res) => {
     });
     //uuid
 
-    console.log("hej hallå");
-
     const data = JSON.stringify({
         payeePaymentReference: "0123456789",
         callbackUrl: "https://johanssudd-checkout.herokuapp.com/callback",
@@ -68,6 +66,8 @@ app.post("/swish", async (req, res) => {
         ca: fs.readFileSync('ssl/Swish_TLS_RootCA.pem', { encoding: 'utf8' }),
     });
 
+    console.log("inte certifikat när de skapades hallå");
+
     const options = {
         agent: agent,
         hostname: "mss.cpc.getswish.net",
@@ -80,6 +80,8 @@ app.post("/swish", async (req, res) => {
         }
       };
 
+      console.log("måste va request")
+
       const request = https.request(options, response => {
         res.send({"statusCode: ": "res.statusCode"});
       
@@ -87,6 +89,8 @@ app.post("/swish", async (req, res) => {
           process.stdout.write(d);
         })
       })
+
+      console.log("var det det?")
       
       request.on("error", error => {
         console.log(error);

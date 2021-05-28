@@ -75,29 +75,29 @@ app.post("/swish", async (req, res) => {
         path: "/swish-cpcapi/api/v2/paymentrequests/" + uuid,
         method: "PUT",
         headers: {
-          "Content-Type": "application/json",
-          "Content-Length": data.length
+            "Content-Type": "application/json",
+            "Content-Length": data.length
         }
-      };
+    };
 
-      console.log("måste va request")
+    console.log("måste va request")
 
-      const request = https.request(options, response => {
-        res.send({"statusCode: ": "res.statusCode"});
+    const request = https.request(options, response => {
+        console.log("statusCode: " + response.statusCode);
       
         response.on("data", d => {
-          process.stdout.write(d);
+            console.log(d);
         })
-      })
+    })
 
-      console.log("var det det?")
+    console.log("var det det?")
       
-      request.on("error", error => {
+    request.on("error", error => {
         console.log(error);
-      })
+    })
       
-      request.write(data);
-      request.end();
+    request.write(data);
+    request.end();
 
       /*
 

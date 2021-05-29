@@ -5,7 +5,6 @@ const request = require("request");
 const cors = require("cors");
 const PORT = process.env.PORT || 5000;
 const fs = require('fs');
-const axios = require('axios');
 
 app.use(cors());
 

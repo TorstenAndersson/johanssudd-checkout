@@ -49,19 +49,9 @@ app.post("/swish", async (req, res) => {
     });
     //uuid
 
-    const data = JSON.stringify({
-        payeePaymentReference: "0123456789",
-        callbackUrl: "https://johanssudd-checkout.herokuapp.com/callback",
-        payeeAlias: "1231181189",
-        currency: "SEK",
-        payerAlias: "4671234768",
-        amount: "100",
-        message: "Johans Tisha"
-    });
-
     request({
         method: "POST",
-        uri: "mss.cpc.getswish.net/swish-cpcapi/api/v2/paymentrequests/" + uuid,
+        uri: "https://mss.cpc.getswish.net/swish-cpcapi/api/v2/paymentrequests/${uuid}",
         headers: {
           "Content-Type": "application/json"
         },

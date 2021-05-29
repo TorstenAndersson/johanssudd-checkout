@@ -14,7 +14,7 @@
     "ejs": "^3.1.5",
     "express": "^4.15.2",
     "stripe": "^8.149.0",
-    "axios": "^0.21.1"
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "got": "^11.3.0",

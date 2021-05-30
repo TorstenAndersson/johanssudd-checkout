@@ -65,7 +65,7 @@ app.post("/swish", async (req, res) => {
             message: "Johans Tisha"
         }),
         agentOptions: {
-            cert: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.p12'),
+            cert: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.pem'),
             key: fs.readFileSync("./ssl/Swish_Merchant_TestCertificate_1234679304.key"),
             //key: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.key'),
             ca: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.pem')

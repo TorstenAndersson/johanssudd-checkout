@@ -63,12 +63,12 @@ app.post("/swish", async (req, res) => {
             payerAlias: "4671234768",
             amount: "100",
             message: "Johans Tisha"
-        })/*,
+        }),
         agentOptions: {
             cert: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.pem'),
             key: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.key'),
             ca: fs.readFileSync('./ssl/Swish_TLS_RootCA.pem')
-        }*/
+        }
       }, (error, httpResponse, body) => {
         console.log(error)
         console.log(httpResponse)

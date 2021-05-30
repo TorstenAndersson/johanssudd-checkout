@@ -53,7 +53,7 @@ app.post("/swish", async (req, res) => {
         method: "POST",
         uri: `https://mss.cpc.getswish.net/swish-cpcapi/api/v2/paymentrequests/` + uuid,
         headers: {
-          "Content-Type": "application/json"
+            "Content-Type": "application/json"
         },
         body: JSON.stringify({
             payeePaymentReference: "0123456789",
@@ -65,15 +65,15 @@ app.post("/swish", async (req, res) => {
             message: "Johans Tisha"
         }),
         agentOptions: {
-            cert: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.pem'),
-            key: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.key'),
+            cert: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.p12'),
+            //key: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.key'),
             ca: fs.readFileSync('./ssl/Swish_TLS_RootCA.pem')
         }
-      }, (error, httpResponse, body) => {
+    }, (error, httpResponse, body) => {
         console.log(error)
         console.log(httpResponse)
         console.log(body)
-      });
+    });
 
     /*
 

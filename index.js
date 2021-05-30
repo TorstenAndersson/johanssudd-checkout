@@ -65,9 +65,9 @@ app.post("/swish", async (req, res) => {
             message: "Johans Tisha"
         }),
         agentOptions: {
-            cert: path.resolve(__dirname, 'ssl/Swish_Merchant_TestCertificate_1234679304.pem'),
-        key: path.resolve(__dirname, 'ssl/Swish_Merchant_TestCertificate_1234679304.key'),
-        ca: path.resolve(__dirname, 'ssl/Swish_TLS_RootCA.pem'),
+            cert: fs.readFileSync(path.resolve(__dirname, 'ssl/Swish_Merchant_TestCertificate_1234679304.pem')),
+            key: fs.readFileSync(path.resolve(__dirname, 'ssl/Swish_Merchant_TestCertificate_1234679304.key')),
+            ca: fs.readFileSync(path.resolve(__dirname, 'ssl/Swish_TLS_RootCA.pem')),
         }
       }, (error, httpResponse, body) => {
         console.log(error)

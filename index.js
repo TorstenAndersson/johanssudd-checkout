@@ -1,6 +1,6 @@
 const app = require("express")();
 const stripe = require("stripe")("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");
-//const path = require("path")
+const path = require("path")
 const request = require("request");
 const cors = require("cors");
 const PORT = process.env.PORT || 5000;
@@ -65,9 +65,9 @@ app.post("/swish", async (req, res) => {
             message: "Johans Tisha"
         }),
         agentOptions: {
-            cert: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.pem'),
-            key: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.key'),
-            ca: fs.readFileSync('./ssl/Swish_TLS_RootCA.pem')
+            cert: path.resolve(__dirname, 'ssl/Swish_Merchant_TestCertificate_1234679304.pem'),
+        key: path.resolve(__dirname, 'ssl/Swish_Merchant_TestCertificate_1234679304.key'),
+        ca: path.resolve(__dirname, 'ssl/Swish_TLS_RootCA.pem'),
         }
       }, (error, httpResponse, body) => {
         console.log(error)

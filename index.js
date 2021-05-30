@@ -51,7 +51,7 @@ app.post("/swish", async (req, res) => {
 
     request({
         method: "POST",
-        uri: `https://mss.cpc.getswish.net/swish-cpcapi/api/v2/paymentrequests/${uuid}`,
+        uri: `https://mss.cpc.getswish.net/swish-cpcapi/api/v2/paymentrequests/` + uuid,
         headers: {
           "Content-Type": "application/json"
         },

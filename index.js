@@ -68,7 +68,7 @@ app.post("/swish", async (req, res) => {
             cert: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.p12'),
             key: fs.readFileSync("./ssl/Swish_Merchant_TestCertificate_1234679304.key"),
             //key: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.key'),
-            ca: fs.readFileSync('./ssl/Swish_TLS_RootCA.pem')
+            ca: fs.readFileSync('./ssl/Swish_Merchant_TestCertificate_1234679304.pem')
         }
     }, (error, httpResponse, body) => {
         console.log(error)
